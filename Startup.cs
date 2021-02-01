@@ -22,6 +22,7 @@ namespace WebSocketServer
             app.UseWebSockets();
             app.Use(async (context, next) =>
             {
+                WriteRequestParam(context);
                 if (context.WebSockets.IsWebSocketRequest)
                 {
                     WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
@@ -29,9 +30,32 @@ namespace WebSocketServer
                 }
                 else
                 {
+                    Console.WriteLine("hello from the second request delegate");
+
                     await next();
                 }
             });
+
+            app.Run(async context =>
+            {
+                Console.WriteLine("hello from the third request delegate");
+                await context.Response.WriteAsync("hello from the async reponse");
+            });
+        }
+
+        public void WriteRequestParam(HttpContext context)
+        {
+            Console.WriteLine("request method: " + context.Request.Method);
+            Console.WriteLine("request protocol: " + context.Request.Protocol);
+
+            if(context.Request.Headers != null)
+            {
+                foreach (var h in context.Request.Headers)
+                {
+                    Console.WriteLine("---> "+ h.Key+" : " + h.Value);
+                }
+            }
+
         }
     }
 }
