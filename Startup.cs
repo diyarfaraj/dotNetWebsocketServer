@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net.WebSockets;
+using System.Threading;
 
 namespace WebSocketServer
 {
@@ -20,21 +21,7 @@ namespace WebSocketServer
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseWebSockets();
-            app.Use(async (context, next) =>
-            {
-                WriteRequestParam(context);
-                if (context.WebSockets.IsWebSocketRequest)
-                {
-                    WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                    Console.WriteLine("websocket connected");
-                }
-                else
-                {
-                    Console.WriteLine("hello from the second request delegate");
-
-                    await next();
-                }
-            });
+            
 
             app.Run(async context =>
             {
@@ -56,6 +43,17 @@ namespace WebSocketServer
                 }
             }
 
+        }
+
+        private async Task RecieveMessage(WebSocket socket, Action<WebSocketReceiveResult, byte[]> handleMessage)
+        {
+            var buffer = new byte[1024 * 4];
+
+            while (socket.State == WebSocketState.Open)
+            {
+                var result = await socket.ReceiveAsync(buffer: new ArraySegment<byte>(buffer), cancellationToken: CancellationToken.None);
+                handleMessage(result, buffer);
+            }
         }
     }
 }
