@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net.WebSockets;
 using System.Threading;
+using WebSocketServer.Middleware;
 
 namespace WebSocketServer
 {
@@ -16,12 +17,13 @@ namespace WebSocketServer
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddWebSocketManager();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseWebSockets();
-            
+            app.UseWebSocketServer();
 
             app.Run(async context =>
             {
