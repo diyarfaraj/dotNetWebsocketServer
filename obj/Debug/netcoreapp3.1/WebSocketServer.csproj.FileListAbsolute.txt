@@ -18,3 +18,5 @@ C:\Users\Diyar\source\repos\WebSocketServer\WebSocketServer\obj\Debug\netcoreapp
 C:\Users\Diyar\source\repos\WebSocketServer\WebSocketServer\obj\Debug\netcoreapp3.1\WebSocketServer.dll
 C:\Users\Diyar\source\repos\WebSocketServer\WebSocketServer\obj\Debug\netcoreapp3.1\WebSocketServer.pdb
 C:\Users\Diyar\source\repos\WebSocketServer\WebSocketServer\obj\Debug\netcoreapp3.1\WebSocketServer.genruntimeconfig.cache
+C:\Users\Diyar\source\repos\WebSocketServer\WebSocketServer\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Diyar\source\repos\WebSocketServer\WebSocketServer\obj\Debug\netcoreapp3.1\WebSocketServer.csproj.CopyComplete

@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "MKhRkFCLLN6V97Pxa6+wKRFWDL0C660K7XDivyBDgOY6Gvso7QyDfxQtD7UGrFjjkcAmrXzsrd9VupQDT28opg==",
+  "dgSpecHash": "GsY13SAZVob5szSkqCpF6jUs1RTqKreFR6+krojwCZ/qtfv5GioplS1qHHP039nJRO2jswEi5x/Xbf4mxn1hgg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Diyar\\source\\repos\\WebSocketServer\\WebSocketServer\\WebSocketServer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Diyar\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
